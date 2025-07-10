@@ -1,26 +1,26 @@
 // Navigation functionality
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.getElementById("nav-toggle");
   const navMenu = document.getElementById("nav-menu");
   const navLinks = document.querySelectorAll(".nav-link");
   const navbar = document.getElementById("navbar");
 
   // Mobile menu toggle
-  navToggle.addEventListener("click", function () {
+  navToggle.addEventListener("click", () => {
     navMenu.classList.toggle("active");
     navToggle.classList.toggle("active");
   });
 
   // Close mobile menu when clicking on a link
   navLinks.forEach((link) => {
-    link.addEventListener("click", function () {
+    link.addEventListener("click", () => {
       navMenu.classList.remove("active");
       navToggle.classList.remove("active");
     });
   });
 
   // Navbar scroll effect
-  window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", () => {
     if (window.scrollY > 100) {
       navbar.classList.add("scrolled");
     } else {
@@ -96,14 +96,14 @@ document.addEventListener("DOMContentLoaded", function () {
     rootMargin: "0px 0px -50px 0px",
   };
 
-  const observer = new IntersectionObserver(function (entries) {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
 
         // Animate skill bars when skills section is visible
         if (entry.target.id === "skills") {
-          animateSkillBars();
+          // Removed animateSkillBars() call
         }
       }
     });
@@ -119,16 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Skill bars animation
-  function animateSkillBars() {
-    const skillBars = document.querySelectorAll(".skill-progress");
-
-    skillBars.forEach((bar) => {
-      const width = bar.getAttribute("data-width");
-      setTimeout(() => {
-        bar.style.width = width + "%";
-      }, 200);
-    });
-  }
+  // Removed animateSkillBars() function
 
   // Matrix rain effect
   function createMatrixRain() {
@@ -152,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
   createMatrixRain();
 
   // Parallax effect for hero section
-  window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", () => {
     const scrolled = window.pageYOffset;
     const parallaxElements = document.querySelectorAll(".hero-background");
 
@@ -274,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
   createParticles();
 
   // Loading animation
-  window.addEventListener("load", function () {
+  window.addEventListener("load", () => {
     document.body.classList.add("loaded");
   });
 
@@ -303,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.body.appendChild(scrollToTopBtn);
 
-  window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", () => {
     if (window.scrollY > 500) {
       scrollToTopBtn.style.opacity = "1";
       scrollToTopBtn.style.visibility = "visible";
@@ -313,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  scrollToTopBtn.addEventListener("click", function () {
+  scrollToTopBtn.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -344,7 +335,7 @@ function debounce(func, wait) {
 }
 
 // Apply debouncing to scroll events
-const debouncedScrollHandler = debounce(function () {
+const debouncedScrollHandler = debounce(() => {
   // Scroll-based animations can be added here
 }, 10);
 
